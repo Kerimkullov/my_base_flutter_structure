@@ -17,7 +17,7 @@ abstract class MyBeelineColors {
 
   /// Primary
   static const MaterialColor primary = MaterialColor(
-    0XFF0F3552,
+    0XFF343434,
     <int, Color>{
       50: Color(0xff7b90a0), //10%
       100: Color(0xff6f8697), //20%
@@ -33,7 +33,7 @@ abstract class MyBeelineColors {
   );
 
   /// Secondary
-  static const secondaryColor = Color(0XFF0073EB);
+  static const secondaryColor = Color(0XFFFFB902);
 
   /// Tertiary
   static const tertiaryColor = Color(0XFFCAE8F6);
@@ -43,7 +43,7 @@ abstract class MyBeelineColors {
   static const titleColors = Color(0xff21538D);
 
   /// @temp: extra background
-  static const extraBackgroundColor = Color(0xfff1f4fa);
+  static const extraBackgroundColor = Color(0xff000000);
   static const titleBackgroundColor = Color(0xffFBFCFE);
 
   /// Auth icon inactive color

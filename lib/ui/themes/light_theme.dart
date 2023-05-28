@@ -6,17 +6,17 @@ abstract class MyBeelineLightTheme {
   // Example of creating themes in app
   static ThemeData get theme => ThemeData(
         colorScheme:
-            const ColorScheme.light(primary: MyBeelineColors.positiveSuccess),
+            const ColorScheme.light(primary: MyBeelineColors.secondaryColor),
 
-        primaryColor: MyBeelineColors.positiveSuccess,
+        primaryColor: MyBeelineColors.primary,
 
-        scaffoldBackgroundColor: MyBeelineColors.positiveSuccess,
+        scaffoldBackgroundColor: MyBeelineColors.extraBackgroundColor,
 
         textSelectionTheme: const TextSelectionThemeData(
-            // selectionHandleColor: MyBeelineColors.placeHolder,
-            // selectionColor: MyBeelineColors.placeHolder,
-            // cursorColor: MyBeelineColors.placeHolder,
-            ),
+          selectionHandleColor: MyBeelineColors.placeHolder,
+          selectionColor: MyBeelineColors.placeHolder,
+          cursorColor: MyBeelineColors.placeHolder,
+        ),
         // inputDecorationTheme: _inputDecorationTheme,
         outlinedButtonTheme: const OutlinedButtonThemeData(),
         textButtonTheme: const TextButtonThemeData(),
