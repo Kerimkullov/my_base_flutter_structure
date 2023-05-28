@@ -5,7 +5,8 @@ class MoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const Padding(
+      padding: EdgeInsets.all(8),
       child: Text('More'),
     );
   }
