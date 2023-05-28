@@ -1,0 +1,81 @@
+#!/bin/sh
+# helper scripts
+
+app_update_name() {
+  # This utility is only used briefly so simply add to project then remove after use
+  # Note config must exist in pubspec.yaml
+  flutter pub add --dev --git-url https://github.com/js-rocket/flutter_launcher_name flutter_launcher_name
+  sleep 2
+  flutter pub run flutter_launcher_name:main
+  sleep 1
+  flutter pub remove flutter_launcher_name
+}
+
+flutter_generate() {
+  dart pub run build_runner watch --delete-conflicting-outputs
+}
+
+app_update_icon() {
+  # This utility is only used briefly so simply add to project then remove after use
+  # Note config must exist in pubspec.yaml
+  flutter pub add flutter_launcher_icons
+  sleep 2
+  flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons*
+  sleep 1
+  flutter pub remove flutter_launcher_icons
+}
+
+app_hook_link() {
+  echo "Relinking hooks ..."
+  rm .git/hooks/pre-commit
+  ln -s ../../hooks/pre-commit .git/hooks/pre-commit
+  echo "Done"
+}
+
+# Run
+run() {
+  # shellcheck disable=SC2068
+  # shellcheck disable=SC2039
+  flutter run --flavor $1 -t lib/main_$1.dart ${@:2}
+}
+
+# Gen arb
+l10n(){
+  flutter gen-l10n
+}
+
+format() {
+  flutter format --set-exit-if-changed lib test
+}
+
+test_app() {
+  very_good test
+  # Uncomment this two lines below when we will start to write unit tests
+  # very_good test packages
+  # very_good test --coverage --min-coverage 70
+}
+
+test_coverage() {
+  # Generate `coverage/lcov.info` file
+  flutter test --coverage
+  # Generate HTML report
+  # Note: on macOS you need to have lcov installed on your system (`brew install lcov`) to use this:
+  genhtml coverage/lcov.info -o coverage/html
+  # Open the report
+  open coverage/html/index.html
+}
+
+
+
+# App management scripts
+if [ "$1" = "relink-githook" ]; then app_hook_link; exit; fi
+if [ "$1" = "update-icon" ]; then app_update_icon; exit; fi
+if [ "$1" = "update-name" ]; then app_update_name; exit; fi
+if [ "$1" = "generate" ]; then flutter_generate; exit; fi
+if [ "$1" = "format" ]; then format; exit; fi
+if [ "$1" = "l10n" ]; then l10n; exit; fi
+if [ "$1" = "test-app" ]; then test_app; exit; fi
+if [ "$1" = "test-coverage" ]; then test_coverage; exit; fi
+
+
+echo "Command not found"
