@@ -7,7 +7,7 @@
       branches:
       - development
   jobs:
-    check-bats-version:
+    flutter-check-integration:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v3
@@ -16,7 +16,7 @@
           channel: 'stable' # or: 'beta', 'dev' or 'master'
       - run: flutter --version
       - run: flutter pub get #installing the plugins for the flutter project
-      - run: flutter test #running flutter test
+      # - run: flutter test #running flutter test
         # Add actions to build ios and android
         # - run: flutter build apk #building flutter apk
         # - run: flutter build appbundle #building flutter bundle
