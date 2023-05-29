@@ -1,0 +1,25 @@
+  name: learn-github-actions
+  on:
+    push:
+      branches:
+      - development
+    pull_request:
+      branches:
+      - development
+  jobs:
+    check-bats-version:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-java@v2 #plugin for setting up the java
+          with:
+            distribution: ‘zulu’
+            java-version: ‘11’ #defines the java version
+        - uses: subosito/flutter-action@v2
+          with:
+            flutter-version: ‘3.10.0’ #You can define the flutter version.
+        - run: flutter pub get #installing the plugins for the flutter project
+        - run: flutter test #running flutter test
+        # Add actions to build ios and android
+        # - run: flutter build apk #building flutter apk
+        # - run: flutter build appbundle #building flutter bundle
