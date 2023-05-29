@@ -1,4 +1,4 @@
-  name: learn-github-actions
+  name: flutter-check-integration
   on:
     push:
       branches:
