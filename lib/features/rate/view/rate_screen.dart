@@ -6,7 +6,7 @@ class RateScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('Rate'),
+      child: const Text('Rate'),
     );
   }
 }

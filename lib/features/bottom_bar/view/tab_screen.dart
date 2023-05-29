@@ -6,6 +6,7 @@ import 'package:my_beeline/features/main/view/main_screen.dart';
 import 'package:my_beeline/features/more/view/more_screen.dart';
 import 'package:my_beeline/features/rate/view/rate_screen.dart';
 import 'package:my_beeline/features/service/view/service_screen.dart';
+import 'package:my_beeline/l10n/l10n.dart';
 import 'package:my_beeline/ui/colors/my_beeline_colors.dart';
 import 'package:my_beeline/ui/typography/font_weights.dart';
 
@@ -35,78 +36,76 @@ class TabScreen extends StatelessWidget {
               ),
             ],
           ),
-          bottomNavigationBar: Container(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(4),
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  border: Border(
-                      top: BorderSide(
-                    color: Colors.grey,
-                  )),
-                ),
-                child: SingleChildScrollView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  child: Theme(
-                    data: ThemeData(
-                      splashColor: Colors.black,
-                      highlightColor: Colors.black,
+          bottomNavigationBar: ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                border: Border(
+                    top: BorderSide(
+                  color: Colors.grey,
+                )),
+              ),
+              child: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: Theme(
+                  data: ThemeData(
+                    splashColor: Colors.black,
+                    highlightColor: Colors.black,
+                  ),
+                  child: BottomNavigationBar(
+                    currentIndex: state.index,
+                    type: BottomNavigationBarType.fixed,
+                    unselectedLabelStyle: context.bodyXS?.copyWith(
+                      color: MyBeelineColors.errorCritical,
+                      fontWeight: BeelineFontWeights.medium,
                     ),
-                    child: BottomNavigationBar(
-                      currentIndex: state.index,
-                      type: BottomNavigationBarType.fixed,
-                      unselectedLabelStyle: context.bodyXS?.copyWith(
-                        color: MyBeelineColors.errorCritical,
-                        fontWeight: BeelineFontWeights.medium,
-                      ),
-                      selectedLabelStyle: context.bodyXS?.copyWith(
-                        color: MyBeelineColors.secondaryColor,
-                        fontWeight: BeelineFontWeights.regular,
-                      ),
-                      unselectedIconTheme:
-                          const IconThemeData(color: Colors.white),
-                      unselectedItemColor: MyBeelineColors.primary,
-                      backgroundColor: Colors.black,
-                      elevation: 0,
-                      onTap: (v) {
-                        context.read<BottomBarCubit>().changeTab(v);
-                      },
-                      items: const [
-                        BottomNavigationBarItem(
-                          icon: Icon(Icons.home),
-                          activeIcon: Icon(
-                            Icons.home,
-                            color: MyBeelineColors.secondaryColor,
-                          ),
-                          label: 'Main',
-                        ),
-                        BottomNavigationBarItem(
-                          icon: Icon(Icons.rate_review),
-                          activeIcon: Icon(
-                            Icons.rate_review,
-                            color: MyBeelineColors.secondaryColor,
-                          ),
-                          label: 'Rate',
-                        ),
-                        BottomNavigationBarItem(
-                          icon: Icon(Icons.room_service),
-                          activeIcon: Icon(
-                            Icons.room_service,
-                            color: MyBeelineColors.secondaryColor,
-                          ),
-                          label: 'Service',
-                        ),
-                        BottomNavigationBarItem(
-                          icon: Icon(Icons.more),
-                          activeIcon: Icon(
-                            Icons.more,
-                            color: MyBeelineColors.secondaryColor,
-                          ),
-                          label: 'More',
-                        ),
-                      ],
+                    selectedLabelStyle: context.bodyXS?.copyWith(
+                      color: MyBeelineColors.secondaryColor,
+                      fontWeight: BeelineFontWeights.regular,
                     ),
+                    unselectedIconTheme:
+                        const IconThemeData(color: Colors.white),
+                    unselectedItemColor: MyBeelineColors.primary,
+                    backgroundColor: Colors.black,
+                    elevation: 0,
+                    onTap: (v) {
+                      context.read<BottomBarCubit>().changeTab(v);
+                    },
+                    items: [
+                      BottomNavigationBarItem(
+                        icon: const Icon(Icons.home),
+                        activeIcon: const Icon(
+                          Icons.home,
+                          color: MyBeelineColors.secondaryColor,
+                        ),
+                        label: context.l10n.main,
+                      ),
+                      BottomNavigationBarItem(
+                        icon: const Icon(Icons.rate_review),
+                        activeIcon: const Icon(
+                          Icons.rate_review,
+                          color: MyBeelineColors.secondaryColor,
+                        ),
+                        label: context.l10n.rate,
+                      ),
+                      BottomNavigationBarItem(
+                        icon: const Icon(Icons.room_service),
+                        activeIcon: const Icon(
+                          Icons.room_service,
+                          color: MyBeelineColors.secondaryColor,
+                        ),
+                        label: context.l10n.service,
+                      ),
+                      BottomNavigationBarItem(
+                        icon: const Icon(Icons.more),
+                        activeIcon: const Icon(
+                          Icons.more,
+                          color: MyBeelineColors.secondaryColor,
+                        ),
+                        label: context.l10n.more,
+                      ),
+                    ],
                   ),
                 ),
               ),

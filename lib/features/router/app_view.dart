@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_beeline/core/di/injection.dart';
 import 'package:my_beeline/features/bottom_bar/cubit/bottom_bar_cubit.dart';
 import 'package:my_beeline/features/router/app_router.dart';
+import 'package:my_beeline/l10n/l10n.dart';
 import 'package:my_beeline/ui/themes/themes.dart';
 
 class App extends StatefulHookWidget {
@@ -31,10 +32,10 @@ class _AppState extends State<App> {
         themeMode: ThemeMode.dark,
         localizationsDelegates: const [
           // Add for localization
-          // AppLocalizations.delegate,
+          AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
         ],
-        // supportedLocales: AppLocalizations.supportedLocales,
+        supportedLocales: AppLocalizations.supportedLocales,
         builder: (context, child) =>
             ScrollConfiguration(behavior: NonGlowBehavior(), child: child!),
       ),
