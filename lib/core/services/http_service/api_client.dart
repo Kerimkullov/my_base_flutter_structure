@@ -209,18 +209,19 @@ class ApiClient {
     throw exception;
   }
 
-  Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
-    final options = Options(
-      method: requestOptions.method,
-      headers: requestOptions.headers,
-    );
-    return dio.request<dynamic>(
-      requestOptions.path,
-      data: requestOptions.data,
-      queryParameters: requestOptions.queryParameters,
-      options: options,
-    );
-  }
+  // TODO:(Dastan) Uncomment to retry api call in future
+  // Future<Response<dynamic>> _retry(RequestOptions requestOptions) async {
+  //   final options = Options(
+  //     method: requestOptions.method,
+  //     headers: requestOptions.headers,
+  //   );
+  //   return dio.request<dynamic>(
+  //     requestOptions.path,
+  //     data: requestOptions.data,
+  //     queryParameters: requestOptions.queryParameters,
+  //     options: options,
+  //   );
+  // }
 
   /// Add logic to handle _refreshToken
   ///
